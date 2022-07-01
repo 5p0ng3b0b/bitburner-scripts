@@ -1,7 +1,7 @@
 // This script is awesome and will autocomplete the infiltrate tasks in bitburner.
 // It does not always run properly, it could be a browser issue and works 95% with game running on edge browser.
 // This was copied from https://pastebin.com/7DuFYDpJ and modified to work with shadows of anarchy augments.
-// Type wget "https://raw.githubusercontent.com/5p0ng3b0b/bitburner-scripts/main/autoinfil.js" from you home terminal to download.
+// Type "wget https://raw.githubusercontent.com/5p0ng3b0b/bitburner-scripts/main/autoinfil.js autoinfil.js" from you home terminal to download.
 // Type 'run autoinfil.js' from home terminal. options are --start --stop --quiet although the --start option is not required.
 // Try always running it via an alias eg 'alias alias infil="run autoinfil.js --stop --quiet; run autoinfil.js --quiet""
 // Once the script is running, It will activate when you visit any company and click the infiltrate button.
