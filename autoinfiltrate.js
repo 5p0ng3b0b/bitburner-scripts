@@ -3,7 +3,7 @@
 // This was copied from https://pastebin.com/7DuFYDpJ and modified to work with shadows of anarchy augments.
 // Type "wget https://raw.githubusercontent.com/5p0ng3b0b/bitburner-scripts/main/autoinfiltrate.js autoinfiltrate.js" from you home terminal to download.
 // Type 'run autoinfiltrate.js' from home terminal. options are --start --stop --quiet although the --start option is not required.
-// Try always running it via an alias eg 'alias alias infil="run autoinfiltrate.js --stop --quiet; run autoinfiltrate.js --quiet""
+// Try always running it via an alias eg 'alias autoinfil="run autoinfiltrate.js --stop --quiet; run autoinfiltrate.js --quiet""
 // Once the script is running, It will activate when you visit any company and click the infiltrate button.
 // You can use infiltrate to quickly get alot of money early in the game or quickly earn rep for any faction.
 // ecorp in Aevum is the highest earner followed by megacorp in sector-12 and then KuaiGong International in Chongqing.
