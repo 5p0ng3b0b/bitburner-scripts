@@ -23,7 +23,7 @@ const state = {
 };
 
 // Speed of game actions, in milliseconds. Default 22
-const speed = 50;
+const speed = 25;
 
 // Small hack to save RAM.
 // This will work smoothly, because the script does not use
@@ -68,22 +68,26 @@ const infiltrationGames = [
 		init: function (screen) { },
 		play: function (screen) {
 			const h4 = getEl(screen, "h4");
-			const code = h4[1].textContent;
+			const spanElements = h4[1].querySelectorAll("span");
+			const code = Array.from(spanElements)
+				.filter(span => span.textContent !== "?")
+				.map(span => span.textContent)
+				.pop();
 
-			switch (code) {
-				case "↑":
-					pressKey("w");
-					break;
-				case "↓":
-					pressKey("s");
-					break;
-				case "←":
-					pressKey("a");
-					break;
-				case "→":
-					pressKey("d");
-					break;
-			}
+      switch (code) {
+        case "↑":
+          pressKey("w");
+          break;
+        case "↓":
+          pressKey("s");
+          break;
+        case "←":
+          pressKey("a");
+          break;
+        case "→":
+          pressKey("d");
+          break;
+      }
 		},
 	},
 	{
@@ -117,7 +121,7 @@ const infiltrationGames = [
 		},
 	},
 	{
-		name: "slash when his guard is down",
+		name: "attack when his guard is down",
 		init: function (screen) {
 			state.game.data = "wait";
 		},
@@ -131,7 +135,7 @@ const infiltrationGames = [
 
 			// Attack in next frame - instant attack sometimes
 			// ends in failure.
-			if ('wait' === state.game.data && -1 !== data.indexOf("ATTACKING!")) {
+			if ('wait' === state.game.data && -1 !== data.indexOf("Preparing?")) {
 				state.game.data = "attack";
 			}
 		},
@@ -162,6 +166,7 @@ const infiltrationGames = [
 				"dynamic",
 				"loyal",
 				"based",
+        "straightforward"
 			];
 			const word = getLines(getEl(screen, "h5"))[1];
 
