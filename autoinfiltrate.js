@@ -74,20 +74,20 @@ const infiltrationGames = [
 				.map(span => span.textContent)
 				.pop();
 
-      switch (code) {
-        case "↑":
-          pressKey("w");
-          break;
-        case "↓":
-          pressKey("s");
-          break;
-        case "←":
-          pressKey("a");
-          break;
-        case "→":
-          pressKey("d");
-          break;
-      }
+			switch (code) {
+				case "↑":
+					pressKey("w");
+					break;
+				case "↓":
+					pressKey("s");
+					break;
+				case "←":
+					pressKey("a");
+					break;
+				case "→":
+					pressKey("d");
+					break;
+			}
 		},
 	},
 	{
@@ -166,7 +166,7 @@ const infiltrationGames = [
 				"dynamic",
 				"loyal",
 				"based",
-        "straightforward"
+				"straightforward"
 			];
 			const word = getLines(getEl(screen, "h5"))[1];
 
