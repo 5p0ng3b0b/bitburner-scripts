@@ -117,7 +117,7 @@ const infiltrationGames = [
 		},
 	},
 	{
-		name: "slash when his guard is down",
+		name: "attack when his guard is down",
 		init: function (screen) {
 			state.game.data = "wait";
 		},
@@ -131,7 +131,7 @@ const infiltrationGames = [
 
 			// Attack in next frame - instant attack sometimes
 			// ends in failure.
-			if ('wait' === state.game.data && -1 !== data.indexOf("ATTACKING!")) {
+			if ('wait' === state.game.data && -1 !== data.indexOf("Preparing?")) {
 				state.game.data = "attack";
 			}
 		},
