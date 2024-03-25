@@ -23,7 +23,7 @@ const state = {
 };
 
 // Speed of game actions, in milliseconds. Default 22
-const speed = 50;
+const speed = 25;
 
 // Small hack to save RAM.
 // This will work smoothly, because the script does not use
@@ -68,7 +68,11 @@ const infiltrationGames = [
 		init: function (screen) { },
 		play: function (screen) {
 			const h4 = getEl(screen, "h4");
-			const code = h4[1].textContent;
+			const spanElements = h4[1].querySelectorAll("span");
+			const code = Array.from(spanElements)
+				.filter(span => span.textContent !== "?")
+				.map(span => span.textContent)
+				.pop();
 
 			switch (code) {
 				case "↑":
@@ -162,6 +166,7 @@ const infiltrationGames = [
 				"dynamic",
 				"loyal",
 				"based",
+				"straightforward"
 			];
 			const word = getLines(getEl(screen, "h5"))[1];
 
