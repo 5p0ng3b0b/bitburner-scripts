@@ -69,10 +69,12 @@ const infiltrationGames = [
 		play: function (screen) {
 			const h4 = getEl(screen, "h4");
 			const spanElements = h4[1].querySelectorAll("span");
+			// Adjust for SoA - Trickery of Hermes augmentation
+			// Use the "style" attribute to identify the current code instead of its content
 			const code = Array.from(spanElements)
-				.filter(span => span.textContent !== "?")
-				.map(span => span.textContent)
-				.pop();
+			        .filter(span => !span.attributes.style || !span.attributes.style.textContent)
+			        .map(span => span.textContent)
+			        .pop();
 
 			switch (code) {
 				case "↑":
