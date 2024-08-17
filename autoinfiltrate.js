@@ -714,6 +714,7 @@ function wrapEventListeners() {
 							}
 						}
 
+						Object.setPrototypeOf(hackedEv, KeyboardEvent.prototype);
 						args[0] = hackedEv;
 					}
 
