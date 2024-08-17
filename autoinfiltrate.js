@@ -123,24 +123,28 @@ const infiltrationGames = [
 		},
 	},
 	{
-		name: "attack when his guard is down",
+		name: "guarding", // attack when his guard is down
+		init: function (screen) {
+			state.game.data = "wait";
+		},
+		play: function (screen) { /* do nothing */ },
+	},
+	{
+		name: "distracted", // attack when his guard is down
 		init: function (screen) {
 			state.game.data = "wait";
 		},
 		play: function (screen) {
-			const data = getLines(getEl(screen, "h4"));
-
-			if ("attack" === state.game.data) {
-				pressKey(" ");
-				state.game.data = "done";
-			}
-
-			// Attack in next frame - instant attack sometimes
-			// ends in failure.
-			if ('wait' === state.game.data && -1 !== data.indexOf("Preparing?")) {
-				state.game.data = "attack";
-			}
+			pressKey(" ");
+			state.game.data = "done";
 		},
+	},
+	{
+		name: "alerted", // attack when his guard is down
+		init: function (screen) {
+			state.game.data = "wait";
+		},
+		play: function (screen) { /* do nothing */ },
 	},
 	{
 		name: "say something nice about the guard",
