@@ -69,10 +69,12 @@ const infiltrationGames = [
 		play: function (screen) {
 			const h4 = getEl(screen, "h4");
 			const spanElements = h4[1].querySelectorAll("span");
+			// Adjust for SoA - Trickery of Hermes augmentation
+			// Use the "style" attribute to identify the current code instead of its content
 			const code = Array.from(spanElements)
-				.filter(span => span.textContent !== "?")
-				.map(span => span.textContent)
-				.pop();
+			        .filter(span => !span.attributes.style || !span.attributes.style.textContent)
+			        .map(span => span.textContent)
+			        .pop();
 
 			switch (code) {
 				case "↑":
@@ -121,24 +123,28 @@ const infiltrationGames = [
 		},
 	},
 	{
-		name: "attack when his guard is down",
+		name: "guarding", // attack when his guard is down
+		init: function (screen) {
+			state.game.data = "wait";
+		},
+		play: function (screen) { /* do nothing */ },
+	},
+	{
+		name: "distracted", // attack when his guard is down
 		init: function (screen) {
 			state.game.data = "wait";
 		},
 		play: function (screen) {
-			const data = getLines(getEl(screen, "h4"));
-
-			if ("attack" === state.game.data) {
-				pressKey(" ");
-				state.game.data = "done";
-			}
-
-			// Attack in next frame - instant attack sometimes
-			// ends in failure.
-			if ('wait' === state.game.data && -1 !== data.indexOf("Preparing?")) {
-				state.game.data = "attack";
-			}
+			pressKey(" ");
+			state.game.data = "done";
 		},
+	},
+	{
+		name: "alerted", // attack when his guard is down
+		init: function (screen) {
+			state.game.data = "wait";
+		},
+		play: function (screen) { /* do nothing */ },
 	},
 	{
 		name: "say something nice about the guard",
@@ -473,7 +479,7 @@ export async function main(ns) {
 	}
 
 	print(
-		"Automated infiltration is enabled...\nVWhen you visit the infiltration screen of any company, all tasks are completed automatically."
+		"Automated infiltration is enabled...\nWhen you visit the infiltration screen of any company, all tasks are completed automatically."
 	);
 
 	endInfiltration();
@@ -714,6 +720,7 @@ function wrapEventListeners() {
 							}
 						}
 
+						Object.setPrototypeOf(hackedEv, KeyboardEvent.prototype);
 						args[0] = hackedEv;
 					}
 
