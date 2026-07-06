@@ -411,7 +411,7 @@ const infiltrationGames = [
 				if (!line || line.length < 10) {
 					continue;
 				}
-				if (-1 !== line.indexOf("cut wires number")) {
+				if (-1 !== line.indexOf("cut wire number")) {
 					const parts = line.split(/(number\s*|\.)/);
 					wires.push(parseInt(parts[2]));
 				}
